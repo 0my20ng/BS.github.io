@@ -112,11 +112,14 @@
             cursor: pointer;
             transition: background-color 0.3s;
             overflow: hidden; /* 이미지가 버튼 영역 밖으로 나가지 않도록 설정 */
+            box-shadow: 3px 3px 10px rgba(0, 0, 0, 0.2); /* 그림자 추가 */
         }
 
         .button:hover {
             background-color: #43a047; /* 호버 시 색상 변경 */
+            box-shadow: 4px 4px 15px rgba(0, 0, 0, 0.3); /* 호버 시 더 강한 그림자 */
         }
+
 
         .button-icon {
             position: absolute; /* 버튼의 배경으로 이미지 배치 */
@@ -135,6 +138,29 @@
             text-shadow: 0 2px 4px rgba(0, 0, 0, 0.6); /* 가독성을 위한 그림자 */
             text-align: center;
         }
+
+        /* rent-station-button에 그림자 추가 */
+        #rent-station-button {
+            position: relative; /* 텍스트와 이미지를 개별적으로 배치할 수 있도록 설정 */
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            width: 170px;
+            height: 170px;
+            background-color: #66bb6a; /* 배경색 */
+            border: none;
+            border-radius: 10px; /* 둥근 모서리 */
+            cursor: pointer;
+            transition: background-color 0.3s;
+            overflow: hidden; /* 이미지가 버튼 영역 밖으로 나가지 않도록 설정 */
+            box-shadow: 3px 3px 10px rgba(0, 0, 0, 0.4); /* 그림자 추가 */
+        }
+
+        #rent-station-button:hover {
+            background-color: #43a047; /* 호버 시 색상 변경 */
+            box-shadow: 4px 4px 15px rgba(0, 0, 0, 0.5); /* 호버 시 더 강한 그림자 */
+        }
+
 
         .input-group {
             width: 100%;
@@ -199,7 +225,7 @@
             justify-content: center;
             gap: 10px; /* 아이콘과 텍스트 간격 */
             padding: 10px; /* 내부 여백 */
-            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1); /* 약간의 그림자 */
+            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2); /* 약간의 그림자 */
         }
 
         /* Box Icon */
@@ -294,7 +320,7 @@
                 infoBox.innerHTML = `
                     <div style="display: flex; flex-direction: column; align-items: center;">
                         <div style="font-size: 16px; font-weight: bold; color: #2e7d32; margin-bottom: 10px;">
-                            김묘민님이 자전거를 열심히 탄 시간 ＃
+                            기묘민님이 자전거를 열심히 탄 시간 ＃
                         </div>
                         <div style="font-size: 14px; color: #666; margin-bottom: 10px;">
                             <span style="color: #43a047; font-weight: bold;">GOLD 등급</span> (다음 등급까지 256P)
