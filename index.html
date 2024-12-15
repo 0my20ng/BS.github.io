@@ -21,7 +21,7 @@
             position: relative;
         }
 
-        .container {
+        /* .container {
             width: 100%;
             max-width: 480px;
             height: 80vh;
@@ -35,7 +35,12 @@
             display: flex;
             flex-direction: column;
             justify-content: space-between;
+        } */
+
+        .container {
+            border-radius: 0; /* 모서리를 없앰 */
         }
+
 
         .logo {
             position: absolute;
@@ -126,7 +131,7 @@
             z-index: 2; /* 이미지 위에 표시 */
             font-size: 14px;
             font-weight: bold;
-            color: #ffffff; /* 텍스트 색상 */
+            color: #000000; /* 텍스트 색상 */
             text-shadow: 0 2px 4px rgba(0, 0, 0, 0.6); /* 가독성을 위한 그림자 */
             text-align: center;
         }
@@ -210,6 +215,14 @@
             font-weight: bold;
             color: #2e7d32; /* 초록색 텍스트 */
         }
+
+        .divider {
+            width: 100%;
+            height: 1px;
+            background-color: #ccc;
+            margin: 20px 0; /* 위아래 여백 추가 */
+        }
+
     </style>
 </head>
 
@@ -237,6 +250,15 @@
                 <span class="button-text">스테이션 대여</span>
             </button>
         </div>
+
+        <!-- 근처 스테이션 이미지
+        <img id="nearby-image" src="images/KakaoTalk_20241216_002625661.png" alt="근처 스테이션 이미지" 
+            style="display: none; width: 100%; margin-top: 20px; border: 1px solid #ccc;"> -->
+
+
+        <!-- Divider -->
+        <div class="divider"></div>
+
     
         <!-- Notification and Support Boxes -->
         <div class="box-group">
@@ -261,30 +283,49 @@
     </div>    
 
     <script>
-        document.getElementById('login-button').addEventListener('click', function() {
+        const loginButton = document.getElementById('login-button');
+        let isLoggedIn = false;
+
+        loginButton.addEventListener('click', function() {
             const infoBox = document.querySelector('.info-box');
-            infoBox.innerHTML = `
-                <div style="display: flex; flex-direction: column; align-items: center;">
-                    <div style="font-size: 16px; font-weight: bold; color: #2e7d32; margin-bottom: 10px;">
-                        사용자님이 자전거를 열심히 탄 시간 ＃
+
+            if (!isLoggedIn) {
+                // 로그인 상태
+                infoBox.innerHTML = `
+                    <div style="display: flex; flex-direction: column; align-items: center;">
+                        <div style="font-size: 16px; font-weight: bold; color: #2e7d32; margin-bottom: 10px;">
+                            김묘민님이 자전거를 열심히 탄 시간 ＃
+                        </div>
+                        <div style="font-size: 14px; color: #666; margin-bottom: 10px;">
+                            <span style="color: #43a047; font-weight: bold;">GOLD 등급</span> (다음 등급까지 256P)
+                        </div>
+                        <div style="width: 80%; height: 10px; background-color: #c8e6c9; border-radius: 5px; margin-bottom: 10px;">
+                            <div style="width: 63%; height: 100%; background-color: #43a047; border-radius: 5px;"></div>
+                        </div>
+                        <div style="font-size: 14px; color: #2e7d32;">
+                            444 / 700 P <br>
+                            크레딧 <span style="color: black;">0 C</span> | 쿠폰/패스 <span style="color: black;">1 개</span>
+                        </div>
                     </div>
-                    <div style="font-size: 14px; color: #666; margin-bottom: 10px;">
-                        <span style="color: #43a047; font-weight: bold;">GOLD 등급</span> (다음 등급까지 256P)
-                    </div>
-                    <div style="width: 80%; height: 10px; background-color: #c8e6c9; border-radius: 5px; margin-bottom: 10px;">
-                        <div style="width: 63%; height: 100%; background-color: #43a047; border-radius: 5px;"></div>
-                    </div>
-                    <div style="font-size: 14px; color: #2e7d32;">
-                        444 / 700 P <br>
-                        크레딧 <span style="color: black;">0 C</span> | 쿠폰/패스 <span style="color: black;">1 개</span>
-                    </div>
-                </div>
-            `;
+                `;
+                loginButton.textContent = 'Log out';
+                isLoggedIn = true;
+            } else {
+                // 로그아웃 상태
+                infoBox.innerHTML = `
+                    로그인을 하면 <br>스테이션을 이용한 시간이 나와요!
+                `;
+                loginButton.textContent = 'Login';
+                isLoggedIn = false;
+            }
         });
+
     
         document.getElementById('find-nearby-button').addEventListener('click', function() {
-            alert('근처 스테이션을 찾는 작업을 시작합니다.');
+            const newWindow = window.open('image.html', '_blank', 'width=500,height=500');
         });
+
+
     
         document.getElementById('rent-station-button').addEventListener('click', function() {
     window.open('rent.html', '_blank', 'width=500,height=700');
