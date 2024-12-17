@@ -38,11 +38,63 @@
             border-radius: 5px;
             font-size: 14px;
         }
+
+        button {
+            margin-top: 10px;
+            padding: 10px 15px;
+            background-color: #43a047;
+            color: #fff;
+            border: none;
+            border-radius: 5px;
+            font-size: 14px;
+            cursor: pointer;
+        }
+
+        button:hover {
+            background-color: #2e7d32;
+        }
+
+        .response-box {
+            margin-top: 20px;
+            padding: 10px;
+            border: 1px solid #ddd;
+            border-radius: 5px;
+            background-color: #f0f8ff;
+            width: 300px;
+            text-align: center;
+            color: #333;
+            font-size: 14px;
+        }
     </style>
 </head>
 <body>
     <div class="logo">Bike<br>Station</div>
     <h2>무엇을 도와드릴까요?</h2>
-    <input type="text" placeholder="문의 내용을 입력하세요">
+    <input type="text" id="user-input" placeholder="문의 내용을 입력하세요" onkeypress="handleKeyPress(event)">
+    <button onclick="submitInput()">전송</button>
+
+    <div class="response-box" id="response-box" style="display: none;"></div>
+
+    <script>
+        function submitInput() {
+            const inputField = document.getElementById('user-input');
+            const responseBox = document.getElementById('response-box');
+
+            const userInput = inputField.value.trim(); // 입력된 내용 가져오기
+            if (userInput) {
+                responseBox.textContent = `서버로 전송되었습니다: "${userInput}"`;
+                responseBox.style.display = 'block'; // 결과를 화면에 표시
+                inputField.value = ''; // 입력 필드 비우기
+            } else {
+                alert('내용을 입력해주세요.');
+            }
+        }
+
+        function handleKeyPress(event) {
+            if (event.key === 'Enter') {
+                submitInput(); // Enter 키를 누르면 submitInput 함수 호출
+            }
+        }
+    </script>
 </body>
 </html>
