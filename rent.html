@@ -17,12 +17,25 @@
         }
 
         .logo {
+            display: flex; /* 가로 배치 */
+            align-items: center; /* 세로 중앙 정렬 */
             position: absolute;
             top: 10px;
-            left: 10px;
-            font-size: 30px;
+            left: 10px; /* 로고를 화면 왼쪽에 고정 */
+        }
+
+        .logo-image {
+            width: 70px; /* 이미지 크기 */
+            height: auto;
+            margin-right: 2px; /* 이미지와 텍스트 사이 간격 */
+        }
+
+        .logo-text {
+            font-size: 20px; /* 텍스트 크기 */
             font-weight: bold;
             color: #43a047;
+            line-height: 1.2; /* 텍스트 줄 간격 */
+            text-align: left; /* 텍스트 정렬 */
         }
 
         h2 {
@@ -109,8 +122,13 @@
 </head>
 
 <body>
-    <div class="logo">Bike<br>Station</div>
+    <div class="logo">
+        <img src="images/logo.png" alt="로고 사진" class="logo-image">
+        <span class="logo-text">Bike<br>Station</span>
+    </div>
+
     <h2>스테이션 대여</h2>
+    
     <div class="input-group">
         <input type="text" id="station-code" placeholder="스테이션 코드를 입력해주세요">
         <button id="submit-code-button">입력 완료</button>
